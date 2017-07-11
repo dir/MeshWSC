@@ -1,12 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, url_for, session
 import requests
 import json
 
 app = Flask(__name__)
-global name, image, sizes
-name = "No Current Product"
-image = "http://via.placeholder.com/400x400?text=No%20image"
-sizes = {}
 
 @app.route('/', methods=['GET'])
 def home():
@@ -16,12 +12,14 @@ def home():
 	if pid is None:
 		return render_template('index.html')
 	else:
-		global name, image, sizes
-		name, image, sizes = get_product_info(pid, store)
+		session['name'], session['image'], session['sizes'] = get_product_info(pid, store)
 		return render_template('index.html')
 
 @app.route('/stock_results', methods=['GET'])
 def stock_results():
+	name = session.get('name')
+	image = session.get('image')
+	sizes = session.get('sizes')
 	return render_template('stock_results.html', name=name, img=image, stock=sizes)
 
 def get_product_info(pid, site):
@@ -73,4 +71,7 @@ def get_product_info(pid, site):
 	return product_name, product_image, product_sizes
 
 if __name__ == '__main__':
-	app.run(debug=False)
+	app.run(debug=True)
+	session['name'] = "No Current Product"
+	session['image'] = "http://via.placeholder.com/400x400?text=No%20image"
+	session['sizes'] = {}
