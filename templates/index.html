@@ -74,22 +74,6 @@
             //Do Something to handle error
         }
     });
-
-    $("#stock_refresh").click(function() {
-        var text = $(this).val();
-
-        $.ajax({
-            url: "/stock_results",
-            type: "get",
-            success: function(response) {
-                $("#stock_results").html(response);
-                clickableTable();
-            },
-            error: function(xhr) {
-                //Do Something to handle error
-            }
-        });
-    });
     </script>
 </body>
 </html>
