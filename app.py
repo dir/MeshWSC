@@ -72,6 +72,7 @@ def get_product_info(pid, site):
 
 if __name__ == '__main__':
 	app.run(debug=True)
+	app.secret_key = 'skrt_skrt'
 	session['name'] = "No Current Product"
 	session['image'] = "http://via.placeholder.com/400x400?text=No%20image"
 	session['sizes'] = {}
