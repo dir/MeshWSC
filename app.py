@@ -3,6 +3,7 @@ import requests
 import json
 
 app = Flask(__name__)
+app.secret_key = 'lets cop some shoes'
 
 @app.route('/', methods=['GET'])
 def home():
@@ -20,7 +21,11 @@ def stock_results():
 	name = session.get('name')
 	image = session.get('image')
 	sizes = session.get('sizes')
-	return render_template('stock_results.html', name=name, img=image, stock=sizes)
+
+	if name:
+		return render_template('stock_results.html', name=name, img=image, stock=sizes)
+	else:
+		return render_template('stock_results.html', name="Waiting...", img="http://via.placeholder.com/400x400?text=No%20image", stock="{}")
 
 def get_product_info(pid, site):
 	pid = str(pid).upper()
@@ -72,7 +77,3 @@ def get_product_info(pid, site):
 
 if __name__ == '__main__':
 	app.run(debug=True)
-	app.secret_key = 'skrt_skrt'
-	session['name'] = "No Current Product"
-	session['image'] = "http://via.placeholder.com/400x400?text=No%20image"
-	session['sizes'] = {}
