@@ -73,4 +73,4 @@ def get_product_info(pid, site):
 	return product_name, product_image, product_sizes
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=False)
