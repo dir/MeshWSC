@@ -25,7 +25,7 @@ def stock_results():
 	if name:
 		return render_template('stock_results.html', name=name, img=image, stock=sizes)
 	else:
-		return render_template('stock_results.html', name="Waiting...", img="http://via.placeholder.com/400x400?text=No%20image", stock="{}")
+		return render_template('stock_results.html', name="Waiting...", img="http://via.placeholder.com/400x400?text=No%20image", stock={})
 
 def get_product_info(pid, site):
 	pid = str(pid).upper()
@@ -76,4 +76,4 @@ def get_product_info(pid, site):
 	return product_name, product_image, product_sizes
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=False)
