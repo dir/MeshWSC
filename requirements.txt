@@ -8,7 +8,7 @@ import-string==0.1.0
 itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
-PyYAML==3.12
+PyYAML==5.1
 requests==2.20.0
 six==1.10.0
 urllib3==1.24.2
