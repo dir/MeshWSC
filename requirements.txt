@@ -6,7 +6,7 @@ gunicorn==19.7.1
 idna==2.5
 import-string==0.1.0
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 MarkupSafe==1.0
 PyYAML==3.12
 requests==2.20.0
